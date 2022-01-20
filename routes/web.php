@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AssignmentController;
+use Illuminate\Auth\Middleware\Authorize;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +28,7 @@ Route::group(['prefix'=>'online'],function(){
         return view('index', ['internal'=>$any1.'/'.$any2]);
     })->name('index');
 });
-Route::name('frame.assignments')->resource('assignments',AssignmentController::class);
+Route::resource('assignments',AssignmentController::class);
 Route::name('frame.')->prefix('frame')->group(function(){
     Route::get('/', function () {
         return view('frame.index');

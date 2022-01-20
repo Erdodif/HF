@@ -11,10 +11,10 @@
         <nav>
             <h1 class="logo">Feladatkezelő online</h1>
             <ul>
-                <li><a href="{{ route('frame.index') }}" target="internal">Főoldal</a></li>
-                <li><a href="{{ route('frame.show' ,['id'=>1])}}" target="internal">Nem - főoldal</a></li>
-                <li><a href="" target="internal">Valamilyen oldal</a></li>
-                <li><a href="" target="internal">Oldal X</a></li>
+                <li><a href="{{ route('frame.index')}}" target="internal">Főoldal</a></li>
+                <li><a href="{{ route('assignments.index') }}" target="internal">Feladatok</a></li>
+                <li><a href="" target="internal">Osztályok</a></li>
+                <li><a href="" target="internal">Diákok</a></li>
             </ul>
         </nav>
         <div class="frame-holder">
