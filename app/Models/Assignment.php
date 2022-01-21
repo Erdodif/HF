@@ -10,6 +10,9 @@ use Illuminate\Database\Eloquent\Model;
 class Assignment extends Model
 {
     use HasFactory;
+
+    public $fillable = ['owner_id','title','description','class_id','max_points','due','last_due'];
+
     public function owner(): User
     {
         return $this->belongsTo(User::class, 'owner_id')->first();

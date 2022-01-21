@@ -45,6 +45,11 @@
                     Vissza a feladatokhoz
                 </button>
             </a>
+            <a target="_self" href="{{ route('assignments.edit',['assignment'=>$assignment->id]) }}">
+                <button>
+                    Feladat módosítása
+                </button>
+            </a>
         </div>
     </div>
 </body>

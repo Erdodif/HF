@@ -1,0 +1,15 @@
+.h2{
+    all: unset;
+    width:100%;
+    overflow:auto;
+}
+.description{
+    width:100%;
+    min-height: 12rem;
+}
+.headers, .stats{
+    width: 45%;
+}
+.assignment{
+    justify-content: unset;
+}

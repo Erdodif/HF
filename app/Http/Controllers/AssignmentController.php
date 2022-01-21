@@ -36,7 +36,11 @@ class AssignmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only(['owner_id','title','description','class_id','max_points','due','last_due']);
+        $assignment = new Assignment();
+        $assignment->fill($data);
+        $assignment->save();
+        return redirect()->route('statues.index');
     }
 
     /**
@@ -58,7 +62,7 @@ class AssignmentController extends Controller
      */
     public function edit(Assignment $assignment)
     {
-        //
+        return view('assignments.edit',['assignment'=>$assignment]);
     }
 
     /**
@@ -70,7 +74,9 @@ class AssignmentController extends Controller
      */
     public function update(Request $request, Assignment $assignment)
     {
-        //
+        $assignment->fill($request->only->only(['owner_id','title','description','class_id','max_points','due','last_due']));
+        $assignment->save();
+        return redirect()->route('statues.index');
     }
 
     /**
@@ -81,6 +87,7 @@ class AssignmentController extends Controller
      */
     public function destroy(Assignment $assignment)
     {
-        //
+        $assignment->delete();
+        return redirect()->route('statues.index');
     }
 }
