@@ -10,14 +10,17 @@ body{
 body::-webkit-scrollbar {
     display: none;
 }
-nav, ul{
+ul{
     all: unset;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
 }
 nav{
+    all: unset;
     width: 100%;
+    display: grid;
+    grid-template-columns: 30ch 1fr;
 }
 nav a {
     font-size: 2rem;
@@ -31,6 +34,7 @@ h1{
 ul{
     list-style-type: none;
     justify-content: space-around;
+    width: 100%;
 }
 nav a:hover{
     color: rgb(243, 195, 73);
@@ -45,7 +49,7 @@ iframe{
 body::-webkit-scrollbar {
     display:ruby-base;
 }
-      
+
 footer{
     background: rgb(36, 35, 35);
     color: ghostwhite;

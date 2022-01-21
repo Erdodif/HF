@@ -28,7 +28,7 @@
                 <div>
                     <span>Leadás Határidelye:</span>
                     <span>{{ $assignment->due }}</span>
-                    
+
                 </div>
                 @if($assignment->isEnded())
                     <p>Lejárt a határidő
@@ -40,7 +40,7 @@
                     </p>
                 @endif
             </div>
-            <a target="_self" href="{{ route('assignments.index') }}">
+            <a target="_parent" href="{{ route('assignments.index') }}">
                 <button>
                     Vissza a feladatokhoz
                 </button>
