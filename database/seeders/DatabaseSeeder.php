@@ -19,14 +19,15 @@ class DatabaseSeeder extends Seeder
         \App\Models\Assignment::factory(20)->create();
         $fine = 0;
         $errors = 0;
-        while ($fine < 40){
+        while ($fine < 80){
             try{
                 \App\Models\Solution::factory()->create();
                 $fine++;
                 $errors = 0;
             }
             catch(Exception $e){
-                if($errors ==3){
+                $errors++;
+                if($errors == 3){
                     $errors = 0;
                     $fine++;
                 }

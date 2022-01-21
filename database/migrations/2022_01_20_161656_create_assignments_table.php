@@ -22,7 +22,7 @@ class CreateAssignmentsTable extends Migration
             $table->foreignId('class_id')->constrained('classes');
             $table->integer('max_points')->nullable();
             $table->timestamp('due');
-            $table->timestamp('last_due')->nullable();
+            $table->date('last_due')->nullable();
             $table->timestamps();
         });
     }

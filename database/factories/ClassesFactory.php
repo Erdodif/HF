@@ -14,7 +14,7 @@ class ClassesFactory extends Factory
     public function definition()
     {
         return [
-            'name'=> random_int(5,14).'. '.strtoupper($this->faker->randomAscii())
+            'name'=> random_int(5,14).'. '.strtoupper($this->faker->randomLetter())
         ];
     }
 }

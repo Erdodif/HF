@@ -26,13 +26,16 @@
                     <td>{{ $assignment->getClass()->name }}</td>
                     <td>{{ $assignment->title }}</td>
                     <td>{{ $assignment->due }}</td>
-                    <td title="Feladat megtekintése">
-                        <a href="#megtekinto" target="_self">
-                            <a target="megtekinto" href="{{ route('assignments.show', ['assignment'=>$assignment]) }}">
-                                <button>
-                                    Megtekintés
-                                </button>
-                            </a>
+                    <td>
+                        <a title="Feladat megtekintése" target="megtekinto" href="{{ route('assignments.show', ['assignment'=>$assignment]) }}">
+                            <button>
+                                Megtekintés
+                            </button>
+                        </a>
+                        <a title="Megoldások megtekintése" target="megtekinto" href="{{ route('solutions.index', ['assignment'=>$assignment]) }}">
+                            <button>
+                                Megoldások
+                            </button>
                         </a>
                     </td>
                 </tr>
@@ -40,6 +43,11 @@
             </tbody>
         </table>
     </div>
+    <a target="megtekinto" href="{{ route('assignments.create') }}">
+        <button>
+            Új feladat
+        </button>
+    </a>
     <div class="nezegeto">
         <iframe style="width:100%; height:100%;" src="{{ route('frame.index') }}" frameborder="0" name="megtekinto" id="megtekinto"></iframe>
     </div>

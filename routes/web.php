@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\SolutionController;
 use Illuminate\Auth\Middleware\Authorize;
 use Illuminate\Support\Facades\Route;
 
@@ -29,11 +30,10 @@ Route::group(['prefix'=>'online'],function(){
     })->name('index');
 });
 Route::resource('assignments',AssignmentController::class);
+Route::resource('solutions',SolutionController::class, ['except'=>['index']]);
+Route::get('assignments/{assignment}/solutions' ,['as'=>'solutions.index','uses'=>SolutionController::class.'@index']);
 Route::name('frame.')->prefix('frame')->group(function(){
     Route::get('/', function () {
         return view('frame.index');
     })->name('index');
-    Route::get('/kk/{id}', function ($id) {
-        return response($id);
-    })->name('show');
 });

@@ -50,6 +50,13 @@
                     Feladat módosítása
                 </button>
             </a>
+            <form method="POST" action="{{ route('assignments.destroy',['assignment' => $assignment]) }}" target="_parent">
+                @csrf
+                @method('DELETE')
+                <button type="submit">
+                    Törlés
+                </button>
+            </form>
         </div>
     </div>
 </body>

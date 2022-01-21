@@ -1,6 +1,7 @@
 body{
     background:cornflowerblue;
     color:cornsilk;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin:0;
     display: grid;
     grid-template-rows: 3rem 1fr 3rem;
@@ -24,6 +25,8 @@ nav{
 }
 nav a {
     font-size: 2rem;
+    text-decoration: none;
+    font-weight: bold;
 }
 h1{
     margin:0;

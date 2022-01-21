@@ -14,7 +14,7 @@ class SolutionFactory extends Factory
     public function definition()
     {
         return [
-            'assignment_id'=>random_int(1,10),
+            'assignment_id'=>random_int(1,20),
             'user_id'=>random_int(1,10),
             'link'=>$this->faker->url()
         ];

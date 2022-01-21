@@ -23,7 +23,7 @@ class Assignment extends Model
     }
     public function solutions(): Collection
     {
-        return $this->hasMany(Solution::class)->get();
+        return $this->hasMany(Solution::class,'assignment_id')->get();
     }
     public function assignedUsers(): Collection
     {
