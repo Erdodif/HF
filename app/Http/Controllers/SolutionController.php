@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class SolutionController extends Controller
-{//TODO create és update, validátor és a hozzájuk való blade
+{//TODO #1 create és update, validátor és a hozzájuk való blade
     /**
      * Display a listing of the resource.
      *
