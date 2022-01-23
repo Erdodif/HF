@@ -30,8 +30,9 @@ Route::group(['prefix'=>'online'],function(){
     })->name('index');
 });
 Route::resource('assignments',AssignmentController::class);
-Route::resource('solutions',SolutionController::class, ['except'=>['index']]);
+Route::resource('solutions',SolutionController::class, ['except'=>['index','create']]);
 Route::get('assignments/{assignment}/solutions' ,['as'=>'solutions.index','uses'=>SolutionController::class.'@index']);
+Route::get('assignments/{assignment}/create' ,['as'=>'solutions.create','uses'=>SolutionController::class.'@create']);
 Route::name('frame.')->prefix('frame')->group(function(){
     Route::get('/', function () {
         return view('frame.index');

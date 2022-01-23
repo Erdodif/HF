@@ -12,7 +12,7 @@ class Classes extends Model
     use HasFactory;
     public $timestamps = false;
     public function members():Collection{
-        return $this->hasMany(User::class)->get();
+        return $this->hasMany(User::class,'class_id')->get();
     }
     public function assignments():Collection{
         return $this->HasMany(Assignment::class)->get();

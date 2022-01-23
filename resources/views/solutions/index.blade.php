@@ -15,13 +15,6 @@
         <span>
             {{ $solutions->count() }} megoldás érkezett erre a feladatra
         </span>
-        <div>
-            <a title="Megoldás feltöltése" href="{{ route('solutions.create') }}">
-                <button>
-                    Megoldás Feltöltése
-                </button>
-            </a>
-        </div>
         <table>
             <thead>
                 <tr>
@@ -40,7 +33,7 @@
                     <td>{{ $solution->created_at }}</td>
                     <td>{{ $solution->updated_at }}</td>
                     <td>
-                        <a title="Megoldás megtekintése" href="{{ route('solutions.show', ['solution'=>$solution]) }}">
+                        <a title="Megoldás megtekintése" target="megoldasnezegeto" class="megtekintes" href="{{ route('solutions.show', ['solution'=>$solution]) }}">
                             <button>
                                 Megtekintés
                             </button>
@@ -48,6 +41,11 @@
                     </td>
                 </tr>
             @endforeach
+            <tr>
+                <td colspan="5">
+                    <iframe name="megoldasnezegeto" class="nezegeto" src="{{ route('solutions.create',['assignment'=>$solutions[0]->assignment_id]) }}" frameborder="0"></iframe>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>

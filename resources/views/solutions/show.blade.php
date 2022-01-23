@@ -9,9 +9,6 @@
 </head>
 <body>
     <div>
-        <h1>
-            {{ $solution->assignment()->title }}
-        </h1>
         <table>
             <thead>
                 <tr>
@@ -29,7 +26,7 @@
                 <td>{{ $solution->created_at }}</td>
                 <td>{{ $solution->updated_at }}</td>
                 <td>
-                    <a title="Szerkesztés" target="megtekinto" href="{{ route('solutions.edit', ['solution'=>$solution]) }}">
+                    <a title="Szerkesztés" target="_self" href="{{ route('solutions.edit', ['solution'=>$solution]) }}">
                         <button>
                             Szerkesztés
                         </button>

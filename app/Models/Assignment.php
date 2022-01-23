@@ -29,6 +29,16 @@ class Assignment extends Model
     {
         return $this->getClass()->members();
     }
+    public function missing():Collection
+    {
+        $collection = new Collection();
+        $this->solutions()->each(
+            function(Solution $item, $key) use(&$collection){
+                $collection->add($item->user());
+            }
+        );
+        return $this->assignedUsers()->whereNotIn('id',$collection->pluck('id'));
+    }
     public function isEnded(): bool
     {
         return Carbon::now()->gt($this->due);

@@ -9,6 +9,15 @@ use Illuminate\Http\Request;
 
 class SolutionController extends Controller
 {//TODO #1 create és update, validátor és a hozzájuk való blade
+    private function validateRequest(Request $request)
+    {
+        return $request->validate([
+            'assignment_id' => ['required','numeric'],
+            'user_id' => ['required','numeric'],
+            'link' => ['required','url']
+        ]);
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -27,9 +36,9 @@ class SolutionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Assignment $assignment)
     {
-        return view('solutions.create');
+        return view('solutions.create',['assignment'=>$assignment]);
     }
 
     /**
@@ -40,26 +49,13 @@ class SolutionController extends Controller
      */
     public function store(Request $request)
     {
-        /*
-        $data = $request->only(['owner_id','title','description','class_id','max_points','due','last_due']);
-        $assignment = new Assignment();
-        $assignment->fill($data);
-        if($request['null_last_due']==true){
-            $assignment->last_due = null;
-        }
-        else{
-            $assignment->last_due = $request['last_due'];
-        }
-        if($request['null_may_points']==true){
-            $assignment->max_points = null;
-        }
-        else{
-            $assignment->max_points = $request['max_points'];
-        }
-        $assignment->due = $request['duedate'].' '.$request['duetime'];
-        $assignment->save();*/
-        $solutions = Solution::where('asignment_id',$request['assignment_id']->assignment_id)->get();
-        return view('solutions.index',['solutions'=>$solutions]);
+        $this->validateRequest($request);
+        $data = $request->only(['assignment_id','user_id','link']);
+        $solution = new Solution();
+        $solution->fill($data);
+        $solution->save();
+        $assignment = Assignment::find($request['assignment_id']);
+        return view('solutions.success',['assignment'=>$assignment]);
     }
 
     /**
@@ -93,24 +89,13 @@ class SolutionController extends Controller
      */
     public function update(Request $request, Solution $solution)
     {
-        /*
-        $assignment->fill($request->only(['owner_id','title','description','class_id']));
-        if($request['null_last_due']==true){
-            $assignment->last_due = null;
-        }
-        else{
-            $assignment->last_due = $request['last_due'];
-        }
-        if($request['null_may_points']==true){
-            $assignment->max_points = null;
-        }
-        else{
-            $assignment->max_points = $request['max_points'];
-        }
-        $assignment->due = $request['duedate'].' '.$request['duetime'];
-        $assignment->save();*/
-        $solutions = Solution::where('asignment_id',$solution->assignment_id)->get();
-        return view('solutions.index',['solutions'=>$solutions]);
+        
+        $this->validateRequest($request);
+        $data = $request->only(['assignment_id','user_id','link']);
+        $solution->fill($data);
+        $solution->save();
+        $assignment = Assignment::find($request['assignment_id']);
+        return view('solutions.success',['assignment'=>$assignment]);
     }
 
     /**

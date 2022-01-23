@@ -24,9 +24,9 @@
                 <tr>
                     <td>{{ $assignment->owner()->name }}</td>
                     <td>{{ $assignment->getClass()->name }}</td>
-                    <td>{{ $assignment->title }}</td>
+                    <td class="title">{{ $assignment->title }}</td>
                     <td>{{ $assignment->due }}</td>
-                    <td>
+                    <td class="muveletek">
                         <a title="Feladat megtekintése" target="megtekinto" href="{{ route('assignments.show', ['assignment'=>$assignment]) }}">
                             <button>
                                 Megtekintés
