@@ -60,11 +60,9 @@ $missing = $assignment->missing();
                             </div>
                         </td>
                         <td>
-                            <a title="Megoldás mentése" target="_self" class="mentes" href="{{ route('solutions.store') }}">
-                                <button>
-                                    Mentés
-                                </button>
-                            </a>
+                            <button type="submit">
+                                Mentés
+                            </button>
                         </td>
                     </tr>
                 </tbody>
