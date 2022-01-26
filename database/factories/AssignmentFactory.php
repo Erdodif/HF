@@ -18,7 +18,8 @@ class AssignmentFactory extends Factory
             'title' => $this->faker->words(random_int(3,12),true),
             'description' => $this->faker->words(random_int(20,120),true),
             'class_id' => random_int(1,3),
-            'due' => $this->faker->dateTimeBetween('now - 3 days','+ 30 days')
+            'due' => $this->faker->dateTimeBetween('now - 3 days','+ 30 days'),
+            'max_points' => rand(1,3)==1?rand(5,10):null
         ];
     }
 }
