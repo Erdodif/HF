@@ -14,7 +14,7 @@ class AssignmentController extends Controller
             'title' => ['required','min:8','max:50'],
             'description' => ['required','min:10','max:1024'],
             'class_id' => ['required','numeric'],
-            'due' => ['required','date']
+            'due' => ['date']
         ]);
     }
     /**

@@ -39,6 +39,10 @@ class Assignment extends Model
         );
         return $this->assignedUsers()->whereNotIn('id',$collection->pluck('id'));
     }
+    public function hasPoints():bool
+    {
+        return $this->max_points !== null;
+    }
     public function isEnded(): bool
     {
         return Carbon::now()->gt($this->due);

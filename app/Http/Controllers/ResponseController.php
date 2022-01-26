@@ -2,11 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Assignment;
 use App\Models\Response;
+use App\Models\Solution;
 use Illuminate\Http\Request;
 
 class ResponseController extends Controller
 {
+    private function validateRequest(Request $request)
+    {
+        return $request->validate([
+            'points' => ['numeric'],
+            'solution_id' =>['required']
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +44,13 @@ class ResponseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validateRequest($request);
+        $data = $request->only(['solution_id','text','points']);
+        $response = new Response();
+        $response->fill($data);
+        $response->save();
+        $solution = Solution::find($request['solution_id']);
+        return view('solutions.show',['solution'=>$solution]);
     }
 
     /**
@@ -69,7 +84,12 @@ class ResponseController extends Controller
      */
     public function update(Request $request, Response $response)
     {
-        //
+        $this->validateRequest($request);
+        $data = $request->only(['text','user_id','link']);
+        $response->fill($data);
+        $response->save();
+        $solution = Solution::find($request['solution_id']);
+        return view('solutions.show',['solution'=>$solution]);
     }
 
     /**
@@ -80,6 +100,9 @@ class ResponseController extends Controller
      */
     public function destroy(Response $response)
     {
-        //
+        $id = $response->solution_id;
+        $response->delete();
+        $solution = Solution::find($id);
+        return view('solutions.show',['solution'=>$solution]);
     }
 }

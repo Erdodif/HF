@@ -16,8 +16,8 @@ class CreateResponsesTable extends Migration
         Schema::create('responses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('solution_id')->constrained('solutions');
-            $table->text('text');
-            $table->integer('points')->nullable();
+            $table->text('text')->nullable()->default(null);
+            $table->integer('points')->nullable()->default(null);
             $table->timestamps();
         });
     }
